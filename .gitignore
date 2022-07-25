@@ -1,0 +1,5 @@
+.venv/
+media/Tex/
+media/videos/pythagorean/480p15/partial_movie_files/
+media/videos/pythagorean/720p30/partial_movie_files/
+*.pyc

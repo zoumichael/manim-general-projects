@@ -322,6 +322,8 @@ class pythagorean(Scene):
         for i in range(2):
             self.play(Write(final_equation_line_three[i]))
 
+        self.wait(2)
+
     def shift_tex_to_line(self, tex, line, direction=True, shift_distance=0.4):
         tex.shift(line.get_center)
         guide_line = line.copy()
