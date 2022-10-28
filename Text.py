@@ -51,9 +51,6 @@ class SquareToCircle(Scene):
                     print('invalid simulation scen' + annimiations[num])
                     exit(1)
 
-                grp_of_grp_texes = VGroup(*grp_texes)
-                temp.next_to(grp_of_grp_texes, DOWN)
-
                 g = VGroup(*grp_texes, temp)
                 self.play(FadeOut(g))
                 temp = None
@@ -65,8 +62,9 @@ class SquareToCircle(Scene):
 
     def zeno_anim(self, is_explain, location_object):
         print("Here")
-        zeno = ZenoAnimation(is_explain, location_object)
+        zeno = ZenoAnimation(is_explain)
         zeno.get_zeno_group().scale(0.5)
+        zeno.get_zeno_group().next_to(location_object, DOWN)
 
         self.add(zeno.get_t_line())
         self.add(zeno.get_a_line())

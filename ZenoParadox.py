@@ -17,11 +17,9 @@ def string_to_tex(string, my_font_size=standard_font_size, paragraph_width=stand
 
 
 class ZenoAnimation(Scene):
-    def __init__(self, is_explain, location_object = None):
+    def __init__(self, is_explain):
         # VGroup
         self.zeno_group = VGroup()
-        if location_object is not None:
-            self.zeno_group.move_to(location_object, DOWN)
 
         # Colors
         colors = [RED, YELLOW, GREEN, WHITE]
