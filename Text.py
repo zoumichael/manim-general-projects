@@ -33,7 +33,6 @@ class SquareToCircle(Scene):
                 g = VGroup(*grp_texes)
 
 
-
             for line in range(len(grp_texes)):
                 self.play(FadeIn(grp_texes[line]))
                 self.wait(1)
