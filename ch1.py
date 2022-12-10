@@ -5,7 +5,7 @@ from IntroToInfiniteWorld_text import tls, annimiations, group_ends
 from ZenoParadox import ZenoAnimation
 from process_tex_array import process_tex_array
 
-class SquareToCircle(Scene):
+class Ch1(Scene):
     def construct(self):
         #talking_face = ImageMobject(f"{HOME}/talking.gif").set_width(2)
         #talking_face.scale(0.5)
@@ -93,7 +93,3 @@ class SquareToCircle(Scene):
         return zeno
 
 
-with tempconfig({"quality": "medium_quality"}):
-    #scene = UsingBraces()
-    scene = SquareToCircle()
-    scene.render()

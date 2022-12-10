@@ -44,7 +44,7 @@ class ZenoAnimation(Scene):
         self.all_dots.arrange_in_grid(
             rows=2,
             cols=17,
-            buff=(0.75, 2)
+            buff=(1.25, 2)
         )
 
         self.t_line = Line(self.all_dots[0].get_center(), self.all_dots[16].get_center())
@@ -87,19 +87,39 @@ class ZenoAnimation(Scene):
             self.zeno_group.add(*self.t_braces)
 
             for index in range(len(self.a_lines)):
-                self.a_times.append(Tex(r"$t_0=\frac{100}{v_A}=10$"+str(index)))
-                self.a_distances.append(Tex(r"$s_1=t_0v_T$"+str(index)))
-                self.t_times.append(Tex(r"$t_1=\frac{s_1}{v_A}$" + str(index)))
-                self.t_distances.append(Tex(r"$t_2=\frac{t_1v_T}{v_A}=t_0(\frac{v_T}{v_A})^2$" + str(index)))
-                self.a_times[index].next_to(self.a_lines[index], UP)
-                self.a_distances[index].next_to(self.a_braces[index], DOWN)
-                self.t_times[index].next_to(self.t_lines[index], UP)
-                self.t_distances[index].next_to(self.t_braces[index], DOWN)
+                if index == 0:
+                    self.a_times.append(Tex(r"$t_0=\frac{100}{v_A}$"))
+                    self.a_distances.append(Tex(r"$s_0=100$"))
+                    self.a_times[index].next_to(self.a_lines[index], UP)
+                    self.a_distances[index].next_to(self.a_braces[index], DOWN)
+                    self.t_times.append(Tex(r""))
+                    self.t_distances.append(Tex(r"$s_1=t_0v_T$"))
+                    self.t_times[index].next_to(self.t_lines[index], DOWN)
+                    self.t_distances[index].next_to(self.t_braces[index], UP)
+                if index == 1:
+                    self.a_times.append(Tex(r"$t_1=\frac{s_1}{v_A}$"))
+                    self.a_distances.append(Tex(r""))
+                    self.a_times[index].next_to(self.a_lines[index], UP)
+                    self.a_distances[index].next_to(self.a_braces[index], DOWN)
+                    self.t_times.append(Tex(r""))
+                    self.t_distances.append(Tex(r"$s_2=t_1v_T$"))
+                    self.t_times[index].next_to(self.t_lines[index], DOWN)
+                    self.t_distances[index].next_to(self.t_braces[index], UP)
+                if index == 2:
+                    self.a_times.append(Tex(r"$t_2=\frac{s_2}{v_A}$"))
+                    self.a_distances.append(Tex(r""))
+                    self.a_times[index].next_to(self.a_lines[index], UP)
+                    self.a_distances[index].next_to(self.a_braces[index], DOWN)
+                    self.t_times.append(Tex(r""))
+                    self.t_distances.append(Tex(r"$t_2v_T$"))
+                    self.t_times[index].next_to(self.t_lines[index], DOWN)
+                    self.t_distances[index].next_to(self.t_braces[index], UP)
+
             self.zeno_group.add(*self.a_times, *self.t_times, *self.t_distances, *self.a_distances)
 
 
         for count in range(4):
-            self.TPoints[count].next_to(self.all_dots[self.dots[count][0]], UP)
+            self.TPoints[count].next_to(self.all_dots[self.dots[count][0]], DOWN)
             self.APoints[count].next_to(self.all_dots[self.dots[count][1]], DOWN)
 
 
