@@ -7,59 +7,50 @@ pos_start = {}
 pos_end ={}
 
 #test 1
-tls = tls + [[r"The core concept in calculus:  limit \\ The bridge between the \color{blue} finite \texttt{world} to the infinite world", SINGLE, TIT]]
+tls = tls + [[
+                [r"The core concept in calculus:  limit", att1_happy, TIT],
+                [r"the bridge to the infinite world", att1_normal, TIT]
+            ]]
 count = count + 1
 
-tls = tls + [[r"Each time he reaches to the previous position of the tortoise,"
-              r"the tortoise has moved forward to a new position ahead of him as demonstrated next.", SINGLE, TEA]]
+tls = tls + [[
+                [r"Each time he reaches to the previous position of the tortoise,", att1_normal, TEA],
+                [r"the tortoise has moved forward to a new position ahead of him as demonstrated next.", att1_normal, TEA]
+            ]]
 count = count + 1
 
 anim_name_1 = 'zeno_anim_false'
 animations[count] = anim_name_1
 pos_start[anim_name_1] = count
 
-tls = tls + [[r"We see that Achilles and the tortoise start at two positions $A_0$ and $T_0$ respectively. "
-              r"Then the tortoise moves ahead to $T_{1}$ when Achilles catches up to $A_1=T_{0}$;", START, AIM]]
+tls = tls + [[
+                [r"We see that Achilles and the tortoise start at two positions $A_0$ and $T_0$ respectively.", att1_normal, AIM],
+                [r"Then the tortoise moves ahead to $T_{1}$ when Achilles catches up to $A_1=T_{0}$;", att1_normal, AIM]
+            ]]
 count = count + 1
-tls = tls + [[r"then the tortoise moves to $T_{2}$ when Achilles catches up to $A_2=T_{1}$;", CONTINUE, AIM]]
+
+tls = tls + [[
+                [r"then the tortoise  moves to $T_{2}$ when Achilles catches up to $A_2=T_{1}$;", att1_normal, AIM]
+            ]]
 count = count + 1
-tls = tls + [[r"then the tortoise moves to $T_{3}$ when Achilles catches up to $A_3=T_{4}$ and so on.\\"
-              r"Repeating the process, the tortoise moves to $T_{i}$ when Achilles catches up to $A_i=T_{i-1}$ for each $i=1,2,3,...$.", END, AIM]]
+
+tls = tls + [[
+                [r"then the tortoise moves to $T_{3}$ when Achilles catches up to $A_3=T_{4}$ and so on.", att1_normal, AIM],
+                [r"Repeating the process, the tortoise moves to $T_{i}$ when Achilles catches up to $A_i=T_{i-1}$ for each $i=1,2,3,...$.", att1_normal, AIM]
+            ]]
 count = count + 1
 
 pos_end[anim_name_1] = count
 
-anim_name_2 = 'zeno_anim_true'
-animations[count] = anim_name_2
-pos_start[anim_name_2] = count
-tls = tls + [[r"To get some insights, let us be more quantitative and assume that $A$ runs and $T$ moves at speed $v_A=10m/s$ and $v_T=1m/s$ respectively;"
-              r" and $T$ has a head start of $100m$.\\"
-              r"Now assume that $A$ spends $t_i$ seconds to move from $A_{i}$ to $A_{i+1}$ for $i=0,1,2,3,...$.\\"
-              r"It is clear $t_0 = \frac{100}{v_A}=10$. "
-              r"A moves to $A_1=T_0$ at time $t_0$ while $T$ moves ahead by the distance $s_1=t_0\times v_T$ and reaches to $T_1$.", START, AIM]]
+tls = tls + [[
+                [r"I see your points.  But I rather directly calculate the total time that $A$ needs to catch up the tortoise by simple algebra.", att1_normal, STU],
+                [r" Assu"r"ming $A$ catches $T$ after $t$ seconds. Since $A$ moves extra $100$ meters than $T$, we can get an equation ", att1_normal, STU],
+                [r"$t\times v_A = t\times v_T + 100$", att1_equ, STU],
+                [r"and solve for $t$", att1_normal, STU],
+                [r"$t=100/(v_A-v_T)=100/9$.", att1_equ, STU]
+            ]]
 count = count + 1
 
-tls = tls + [[r"To cover the distance $s_1$, $A$ needs $t_1=\frac{s_1}{v_A}=t_0(\frac{v_T}{v_A})$ seconds and reach $A_2=T_1$."
-              r"But in this period ($t_1$ seconds), $T$ further moves forward by $s_2=t_1\times v_T$ meters and reaches to $T_2$.", CONTINUE, AIM]]
-count = count + 1
-
-tls = tls + [[r"In the next step, $A$ needs $t_2=\frac{s_2}{v_A}=\frac{t_1\times v_T}{v_A}=t_0 (\frac{v_T}{v_A})^2$ seconds to reach the position $A_3=T_2$.  "
-              r"and $T$ further moves forward by $s_3=t_2\times v_T$ meters and reaches to $T_3$. In general, $A$ needs $s_i=t_0 (\frac{v_T}{v_A})^{i}$ seconds to reach $A_i$ from $A_{i-1}$", END, AIM]]
-count = count + 1
-
-pos_end[anim_name_2] = count
-
-tls = tls + [[r"I see your points.  But I rather directly calculate the total time that $A$ needs to catch up the tortoise by simple algebra."], START, STU]
-count = count + 1
-tls = tls + [[r" Assuming $A$ catches $T$ after $t$ seconds. Since $A$ moves extra $100$ meters than $T$, we can get an equation ", CONTINUE, STU]]
-count = count + 1
-tls = tls + [[r"$t\times v_A = t\times v_T + 100$", CONTINUE, STU]]
-count = count + 1
-tls = tls + [[r"and solve for $t$", CONTINUE, STU]]
-count = count + 1
-tls = tls + [[r"and solve for $t$"
-            r"$t=100/(v_A-v_T)=100/9$.", END, STU]]
-count = count + 1
 '''
 count = count + 1
 tls = tls + [[r" Calculus is however special.", TV, NOR]]

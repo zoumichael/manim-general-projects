@@ -1,7 +1,7 @@
 
 from const import *
-#from IntroToInfiniteWorld_text_short import tls, annimiations, group_ends
-from IntroToInfiniteWorld_text import tls, annimiations, group_ends
+#from IntroToInfiniteWorld_text_short import tls, animations, group_ends
+from IntroToInfiniteWorld_text import tls, animations, group_ends
 from ZenoParadox import ZenoAnimation
 from process_tex_array import process_tex_array
 
@@ -30,7 +30,7 @@ class SquareToCircle(Scene):
 
             grp_of_grp_texes = VGroup(*grp_texes)
 
-            if num not in annimiations.keys():
+            if num not in animations.keys():
                 g = VGroup(*grp_texes)
 
 
@@ -38,17 +38,17 @@ class SquareToCircle(Scene):
                 self.play(FadeIn(grp_texes[line]))
                 self.wait(1)
 
-            if num not in annimiations.keys():
+            if num not in animations.keys():
                 self.play(FadeOut(g))
                 self.wait(1)
 
-            if num in annimiations.keys():
-                if annimiations[num] == 'zeno_anim_false':
+            if num in animations.keys():
+                if animations[num] == 'zeno_anim_false':
                     temp = self.zeno_anim(False, grp_of_grp_texes).get_zeno_group()
-                elif annimiations[num] == 'zeno_anim_true':
+                elif animations[num] == 'zeno_anim_true':
                     temp = self.zeno_anim(True, grp_of_grp_texes).get_zeno_group()
                 else:
-                    print('invalid simulation scen' + annimiations[num])
+                    print('invalid simulation scen' + animations[num])
                     exit(1)
 
                 g = VGroup(*grp_texes, temp)

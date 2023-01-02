@@ -2,7 +2,7 @@ from const import *
 
 group_ends = [0]
 tls = []
-annimiations = {}
+animations = {}
 count = 0
 
 #test 1
@@ -10,100 +10,99 @@ tls = tls + [[r"The core concept in calculus:  limit", TV, TIT]]
 count = count + 1
 tls = tls + [[r"The bridge between the finite world to the infinite world", TV, TIT]] #use a picture
 group_ends = group_ends + [count+1]
-
 count = count + 1
-tls = tls + [[r"Well, Calculus might be the most important subject in math.", TV, NOR]]
+tls = tls + [[r"Well, Calculus might be the most important subject in math.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"As you might know, Newton is remembered as the most greatest scientist, ", TV, NOR]]
+tls = tls + [[r"As you might know, Newton is remembered as the greatest scientist, ", TV,TEA]]
 count = count + 1
-tls = tls + [[r"but some people believe that his most important achievement is on calculus", TV, NOR]]
+tls = tls + [[r"yet some people believe that his most important achievement is on calculus", TV,TEA]]
 count = count + 1
-tls = tls + [[r"and British people are quite proud for Newton's achievement.", TV, NOR]]
+tls = tls + [[r"and British people are quite proud for Newton's achievement.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"But folks in the European Continent are not quite happy with that", TV, NOR]]
+tls = tls + [[r"Folks in the European Continent are not quite happy with that", TV,TEA]]
 count = count + 1
-tls = tls + [[r"and they claimed that German mathematician Leibniz should take that credit", TV, NOR]]
+tls = tls + [[r"and they claimed that German mathematician Leibniz should take that credit", TV,TEA]]
 count = count + 1
-tls = tls + [[r"and argued for a long time with British people in history.", TV, NOR]]
+tls = tls + [[r"and argued for a long time with British people in history.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"I wish I were as enthusiastic like you on calculus.  But could you please briefly explain what it is about.", SV, NOR]]
+tls = tls + [[r"I wish I were as enthusiastic like you on calculus.  But could you please briefly explain what it is about.", SV,STU]]
 count = count + 1
 tls = tls + [[r"Generally speaking, it is hard to summarize in one sentence what a math subject is about, "
-             r"especially for beginners like you.", TV, NOR]]
+             r"especially for beginners like you.", TV,TEA]]
 count = count + 1
-tls = tls + [[r" Calculus is however special.", TV, NOR]]
+tls = tls + [[r" Calculus is however special.", TV,TEA]]
 count = count + 1
 tls = tls + [[r"Calculus is all about {\bf limit}, which bridges a {\em finite} world and an {\em infinite} world.", TV, STA]]
 group_ends = group_ends + [count+1]
 
 #test 2
 count = count + 1
-tls = tls + [[r"You sound like a philosopher rather than a mathematician. ", SV, NOR]]
+tls = tls + [[r"You sound like a philosopher rather than a mathematician. ", SV,STU]]
 count = count + 1
-tls = tls + [[r"Well, only wish I'd know my own {\em limit} someday.", SV, NOR]]
+tls = tls + [[r"Well, only wish I'd know my own {\em limit} someday.", SV,STU]]
 count = count + 1
-tls = tls + [[r"But how to define that so called {\bf infinite} world?", SV, NOR]]
+tls = tls + [[r"But how to define that so called {\bf infinite} world?", SV,STU]]
 count = count + 1
-tls = tls + [[r"Well, let's walk in the finite world first, a green world that you should be comfortable to deal with now. Suppose", TV, NOR]]
+tls = tls + [[r"Well, let's walk in the finite world first, a green world that you should be comfortable to deal with now. Suppose", TV,TEA]]
 count = count + 1
 tls = tls + [[r"$A_N=(a_1,a_2,...,a_N)$ ", TV, EQU]]
 count = count + 1
-tls = tls + [[r"denote a list of finite many numbers, We can operate on the elements in $A_N$ in some ways we are familiar with.", TV, NOR]]
+tls = tls + [[r"denote a list of finite many numbers, We can operate on the elements in $A_N$ in some ways we are familiar with.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"For examples, we can sum them up ", TV, NOR]]
+tls = tls + [[r"For examples, we can sum them up ", TV,TEA]]
 count = count + 1
 tls = tls + [[r" $\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}$.", TV, EQU]]
 count = count + 1
-tls = tls + [[r"we can also identify the maximum value of $A_N$. It might take some time, but we can always get the answer in the end.  can't we?", TV, NOR]]
+tls = tls + [[r"we can also identify the maximum value of $A_N$. It might take some time, but we can always get the answer in the end.  can't we?", TV,TEA]]
 count = count + 1
-tls = tls + [[r"Well, at least I can compare each number with all others to find the answer if I have enough time.", SV, NOR]]
+tls = tls + [[r"Well, at least I can compare each number with all others to find the answer if I have enough time.", SV,STU]]
 count = count + 1
-tls = tls + [[r"That is true.  In the finite world, for a task like comparison,  one can naively exhaust all possible scenarios to find the answer.", TV, NOR]]
+tls = tls + [[r"That is true.  In the finite world, for a task like comparison,  one can naively exhaust all possible scenarios to find the answer.", TV,TEA]]
 group_ends = group_ends + [count+1]
 #test 3
 count = count + 1
-tls = tls + [[r"Now let us move to the {\bf infinite} world,  and consider a sequence of numbers that never stops, denoted by", TV, NOR]]
+tls = tls + [[r"Now let us move to the {\bf infinite} world,  and consider a sequence of numbers that never stops, denoted by", TV,TEA]]
 count = count + 1
 tls = tls + [[r"Eq(1.1) $\qquad A:=(a_n)_{n\ge 1}=(a_1,a_2,...,a_n,...).$", TV, EQU]]
 count = count + 1
-tls = tls + [[r"For example, $A$ stands for the list of all natural numbers with $a_n=n$.", TV, NOR]]
+tls = tls + [[r"For example, $A$ stands for the list of all natural numbers with $a_n=n$.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"So what distinguishes the infinite world from the finite world has nothing to do with magnitude of certain quantity?!", SV, NOR]]
+tls = tls + [[r"So what distinguishes the infinite world from the finite world has nothing to do with magnitude of certain quantity?!", SV,STU]]
 count = count + 1
-tls = tls + [[r"In the infinite world, we need operate on infinite many of animals. ", TV, NOR]]
+tls = tls + [[r"In the infinite world, we need operate on infinite many of animals. ", TV,TEA]]
 count = count + 1
-tls = tls + [[r"Be careful about the difference between two concepts:  ``infinite many'' vs ``infinity''.", TV, NOR]]
+tls = tls + [[r"Be careful about the difference between two concepts:  ``infinite many'' vs ``infinity''.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"The former should be clear in word itself, i.e. not finitely many.", TV, NOR]]
+tls = tls + [[r"The former should be clear in word itself, i.e. not finitely many.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"It is not easy to explain the latter exactly at this moment.", TV, NOR]]
+tls = tls + [[r"It is not easy to explain the latter exactly at this moment.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"Intuitively, think about what the following two sequences might represent.", TV, NOR]]
+tls = tls + [[r"Intuitively, think about what the following two sequences might represent.", TV,TEA]]
 
 count = count + 1
 tls = tls + [[r"$(1,2,\dots, n,\dots), \quad (1^2, 2^2,\dots, n^2,\dots)$.", TV, NOT]]
 count = count + 1
-tls = tls + [[r"Both sequences 'approaches' to certain kind of infinity, denoted by", TV, NOR]]
+tls = tls + [[r"Both sequences 'approaches' to certain kind of infinity, denoted by", TV,TEA]]
 count = count + 1
 tls = tls + [[r"$\infty$", TV, EQU]]
 count = count + 1
 tls = tls + [[r"although the second one 'goes' to $\infty$ faster than the first one, "
-              r"i.e. there are different kinds of  $\infty$.", TV, NOR]]
+              r"i.e. there are different kinds of  $\infty$.", TV,TEA]]
 group_ends = group_ends + [count+1]
 
 count = count + 1
 #test 4
-tls = tls + [[r"Does $\infty$ stand for some quality that the sequence ends up?", SV, NOR]]
+tls = tls + [[r"Does $\infty$ stand for some quality that the sequence ends up?", SV,STU]]
 count = count + 1
-tls = tls + [[r"In the finite world,  the value of each number is clearly defined.  In another word,  its relation with other numbers are clear.", TV, NOR]]
+tls = tls + [[r"In the finite world,  the value of each number is clearly defined.  In another word,  its relation with other numbers are clear.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"In the infinite world, $\infty$ does not refer to a specific quantity, but a characteristic of certain type of sequences that can 'goes' beyond any predefined boundary.", TV, NOR]]
+tls = tls + [[r"In the infinite world, $\infty$ does not refer to a specific quantity, but a characteristic of certain type of sequences that can 'goes' beyond any predefined boundary.", TV,TEA]]
 count = count + 1
 tls = tls + [[r"We shall clarify what it means exactly later.  In the infinite world,  as you said, we often need to deal with infinite many animals or, more accurately, "
-              r"end up in an endless process, which distinguish from the finite world we are familiar with.", TV, NOR]]
+              r"end up in an endless process, which distinguish from the finite world we are familiar with.", TV,TEA]]
 count = count + 1
 tls = tls + [[r"Let $S$ denote a general set of real numbers, including the case when its elements can not be listed in a sequence such as the open interval $S=(1,2)$."
-              r"Here comes the first basic concept in the infinite world.", TV, NOR]]
+              r"Here comes the first basic concept in the infinite world.", TV,TEA]]
 count = count + 1
 tls = tls + [[r"Def 1.1.1:", TV, DEF]]
 count = count + 1
@@ -130,19 +129,19 @@ group_ends = group_ends + [count+1]
 #test 5
 
 count = count + 1
-tls = tls + [[r"Notice that a finite set is always bounded, the minimum value is a lower bound and the maximum value is a upper bound.",  TV, NOR]]
+tls = tls + [[r"Notice that a finite set is always bounded, the minimum value is a lower bound and the maximum value is a upper bound.",  TV,TEA]]
 count = count + 1
-tls = tls + [[r"As such,  bound concept is only needed when we deal with a  set $S$ with infinite many elements.", TV, NOR]]
+tls = tls + [[r"As such,  bound concept is only needed when we deal with a  set $S$ with infinite many elements.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"It is easy to see that both examples listed in Eq(1.2) are lower bounded, but not upper bounded.", TV, NOR]]
+tls = tls + [[r"It is easy to see that both examples listed in Eq(1.2) are lower bounded, but not upper bounded.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"Looks like ``any'' in definition 1.1 is the key word to understand lower bound and upper bound.", SV, NOR]]
+tls = tls + [[r"Looks like ``any'' in definition 1.1 is the key word to understand lower bound and upper bound.", SV,STU]]
 count = count + 1
-tls = tls + [[r"The logic of ``any'' need to be emphasized in several key concepts in calculus. Any idea if a number $m$ is not a lower bound of $S$?", TV, NOR]]
+tls = tls + [[r"The logic of ``any'' need to be emphasized in several key concepts in calculus. Any idea if a number $m$ is not a lower bound of $S$?", TV,TEA]]
 count = count + 1
-tls = tls + [[r"There should exist at least one number $x\in S$ such that $x<m$, shouldn't there?", SV, NOR]]
+tls = tls + [[r"There should exist at least one number $x\in S$ such that $x<m$, shouldn't there?", SV,STU]]
 count = count + 1
-tls = tls + [[r"Great! let us write it down", TV, NOR]]
+tls = tls + [[r"Great! let us write it down", TV,TEA]]
 group_ends = group_ends + [count+1]
 
 count = count + 1
@@ -152,26 +151,26 @@ tls = tls + [[r"If $m$ is not a lower bound of a set $S$,  there exist $x\in S$ 
 count = count + 1
 tls = tls + [[r"Similarly, if $M$ is not a upper bound,  there exist $y\in S$ such that $y>M$.", TV, STA]]
 count = count + 1
-tls = tls + [[r"As another example, let $a_n = (1/2)^n$ in definition (1.1), we get a geometric sequence", TV, NOR]]
+tls = tls + [[r"As another example, let $a_n = (1/2)^n$ in definition (1.1), we get a geometric sequence", TV,TEA]]
 count = count + 1
 tls = tls + [[r"Eq(1.3) $\qquad G(1/2):= (1,1/2,(1/2)^2,\dots, (1/2)^{n-1},...)$", TV, NOT]]
 count = count + 1
-tls = tls + [[r"Notice that $G(1/2)$ is decreasing and hence the maximum value is $a_1=1$. what can we say about the minimum value of the set $G(1/2)$?", TV, NOR]]
+tls = tls + [[r"Notice that $G(1/2)$ is decreasing and hence the maximum value is $a_1=1$. what can we say about the minimum value of the set $G(1/2)$?", TV,TEA]]
 count = count + 1
-tls = tls + [[r"$0$ and negative values are not in the sequence. Seems that there is no minimum value for $G(1/2)$, isn't it?", SV, NOR]]
+tls = tls + [[r"$0$ and negative values are not in the sequence. Seems that there is no minimum value for $G(1/2)$, isn't it?", SV,STU]]
 count = count + 1
-tls = tls + [[r"You got the point! By your analysis, any positive number,  any negative number or zero can not be treated as a minimum, and therefore it does not exist.", TV, NOR]]
+tls = tls + [[r"You got the point! By your analysis, any positive number,  any negative number or zero can not be treated as a minimum, and therefore it does not exist.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"Although $0$ is a low bound since all elements in $G(1/2)$ are larger than $0$. Of course, any negative number is a low bound as well.", SV, NOR]]
+tls = tls + [[r"Although $0$ is a low bound since all elements in $G(1/2)$ are larger than $0$. Of course, any negative number is a low bound as well.", SV,STU]]
 group_ends = group_ends + [count+1]
 
 # test 6
 count = count + 1
-tls = tls + [[r"What makes $0$ special is that it is {\bf the greatest lower bound} of $G(1/2)$.", TV, NOR]]
+tls = tls + [[r"What makes $0$ special is that it is {\bf the greatest lower bound} of $G(1/2)$.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"I see.  For any other {\bf larger} number, it is not qualified  as a lower bound of $G(1/2)$, the logic in 'greatest lower bound'?", SV, NOR]]
+tls = tls + [[r"I see.  For any other {\bf larger} number, it is not qualified  as a lower bound of $G(1/2)$, the logic in 'greatest lower bound'?", SV,STU]]
 count = count + 1
-tls = tls + [[r"Exactly!  we can transform the phrase to a algebraic description that is quite helpful in future analysis:", TV, NOR]]
+tls = tls + [[r"Exactly!  we can transform the phrase to a algebraic description that is quite helpful in future analysis:", TV,TEA]]
 count = count + 1
 tls = tls + [[r"Def 1.1.1.", TV, DEF]]
 count = count + 1
@@ -195,17 +194,17 @@ group_ends = group_ends + [count+1]
 count = count + 1
 tls = tls + [[r"We follow the convention that $x, y, z$ are used to denote ANY element in a set, while  $x_0, y_0, z_0$ are used to denote a selected number.", TV, REF]]
 count = count + 1
-tls = tls + [[r"The logic sounds right to me. But how can you verify $m+\epsilon$ is not lower bound without knowing the value of $\epsilon$?", SV, NOR]]
+tls = tls + [[r"The logic sounds right to me. But how can you verify $m+\epsilon$ is not lower bound without knowing the value of $\epsilon$?", SV,STU]]
 count = count + 1
-tls = tls + [[r"We need some algebra rather than depending on numerical comparison.", TV, NOR]]
+tls = tls + [[r"We need some algebra rather than depending on numerical comparison.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"Take above $G(1/2)$ as an example, $0$ is clearly a lower bound since each element $a_n=(1/2)^{n-1}$ in $G(1/2)$ is positive.", TV, NOR]]
+tls = tls + [[r"Take above $G(1/2)$ as an example, $0$ is clearly a lower bound since each element $a_n=(1/2)^{n-1}$ in $G(1/2)$ is positive.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"To show $0$ is the greatest lower bound, for any given $\epsilon>0$,  we can take a sufficient large $N$ such that", TV, NOR]]
+tls = tls + [[r"To show $0$ is the greatest lower bound, for any given $\epsilon>0$,  we can take a sufficient large $N$ such that", TV,TEA]]
 count = count + 1
 tls = tls + [[r"$a_N=(1/2)^{N-1}<\epsilon$", TV, EQU]]
 count = count + 1
-tls = tls + [[r"so that $0+\epsilon=\epsilon$ is no longer a lower bound.", TV, NOR]]
+tls = tls + [[r"so that $0+\epsilon=\epsilon$ is no longer a lower bound.", TV,TEA]]
 count = count + 1
 tls = tls + [[r"Ex 1.1.1", TV, EXA]]
 count = count + 1
@@ -216,10 +215,10 @@ group_ends = group_ends + [count+1]
 
 # test 7
 count = count + 1
-tls = tls + [[r"What makes $\sup S$ and $\inf S$ special?", SV, NOR]]
+tls = tls + [[r"What makes $\sup S$ and $\inf S$ special?", SV,STU]]
 count = count + 1
 tls = tls + [[r"They are quite helpful for us to understand the fundamental concept {\bf limit}. \\ In fact, "
-      r"it turns out that they are exact the mysterious limits for a special type of sequences defined as follows.", TV, NOR]]
+      r"it turns out that they are exact the mysterious limits for a special type of sequences defined as follows.", TV,TEA]]
 count = count + 1
 tls = tls + [[r" A sequence $A$ in Eq (1.1) is called increasing (decreasing) if any item in the sequence is always not larger than its following item, i.e. \\"
       r"     $a_n\le a_{n+1}$ ($a_n\ge a_{n+1}$) for any $n\ge 1$.  \\"
@@ -229,7 +228,7 @@ tls = tls + [[r"Ex\\ $A=(1,3, 5, 7, 9, ...)$ is a increasing sequence;\\"
               r"$A=(1, 1/3, 1/5, 1/7, 1/9, ...)$ is a decreasing sequence; \\"
               r"$A=(1, -2, 3, -4, 5, -6,...)$  is not monotonic since it is neither incrasing nor decreasing.", TV, EXA]]
 count = count + 1
-tls = tls + [[r"We are now in the position to introduce the concept 'limit' of a monotonic sequence.", TV, NOR]]
+tls = tls + [[r"We are now in the position to introduce the concept 'limit' of a monotonic sequence.", TV,TEA]]
 count = count + 1
 tls = tls + [[r" Def 1.1.3:  The limit of a bounded increasing sequence $A$ is defined to be $\sup A$, denoted by", TV, DEF]]
 count = count + 1
@@ -242,22 +241,22 @@ group_ends = group_ends + [count+1]
 
 count = count + 1
 tls = tls + [[r"As you can see, for a monotonic sequence, the concept of limit is clear. \\"
-              r"One can visualize that 'items in $A$ approaches arbitrarily closely to the limit'.", TV, NOR]]
+              r"One can visualize that 'items in $A$ approaches arbitrarily closely to the limit'.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"The phrase like 'arbitrarily close' sound ambiguous to me.", SV, NOR]]
+tls = tls + [[r"The phrase like 'arbitrarily close' sound ambiguous to me.", SV,STU]]
 count = count + 1
 tls = tls + [[r"You are not alone. Mathematicians in early days also got confused with such description. "
               r"To clarify the ambiguity, let $\epsilon$ be a positive number and \\"
               r" $O(l,\epsilon):=(l-\epsilon, l+\epsilon)$ \\"
               r"denote the neighborhood of $l$ with radius $\epsilon>0$, which contains all numbers "
-              r"whose distances to $l$ are less than $\epsilon$", TV, NOR]]
+              r"whose distances to $l$ are less than $\epsilon$", TV,TEA]]
 count = count + 1
 tls = tls + [[r"Denote $l:=\inf A$ for a {\bf bounded decreasing} sequence $A$. For any prescribed $\epsilon>0$, \\"
       r"$l$ is g.l.b,  $\longrightarrow$ $l+\epsilon$ not a l.b. $\longrightarrow$  $\exists a_N\in A$ s.t. $ a_N<l+\epsilon$. \\"
       r"but $l\le a_N$ since $l$ is a l.b., hence\\"
               r" $a_N\in (l, l+\epsilon)\subset O(l,\epsilon)$. \\ "
       r"Since $A\downarrow $, all terms after $a_N$ is more closer to $l$ than $a_N$ "
-      r"and fall in the $(l, l+\epsilon)$ as shown below, and we have ", TV, NOR]]
+      r"and fall in the $(l, l+\epsilon)$ as shown below, and we have ", TV,TEA]]
 count = count + 1
 # insert figure 1.2 here
 tls = tls + [[r"Eq(1.6) $\qquad |a_n-l|<\epsilon, \quad \quad  \mbox{for ALL $n\ge N$}$", TV, EQU]]
@@ -265,33 +264,33 @@ group_ends = group_ends + [count+1]
 
 # test 8
 count = count + 1
-tls = tls + [[r"Got it.  Items in $A$ approach {\bf arbitrarily close} to $l$  simply because $\epsilon$ can be a arbitrarily small.", SV, NOR]]
+tls = tls + [[r"Got it.  Items in $A$ approach {\bf arbitrarily close} to $l$  simply because $\epsilon$ can be a arbitrarily small.", SV,STU]]
 count = count + 1
-tls = tls + [[r"Exactly. let me emphasize that $\epsilon$ caps the distances to $l$ for {\bf all} terms following $a_N$.", TV, NOR]]
+tls = tls + [[r"Exactly. let me emphasize that $\epsilon$ caps the distances to $l$ for {\bf all} terms following $a_N$.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"Pay attention to the key word 'all'.", TV, NOR]]
+tls = tls + [[r"Pay attention to the key word 'all'.", TV,TEA]]
 count = count + 1
 tls = tls + [[r"In another word, the distance threshold $\epsilon$ is applied to all items "
-      r"in the sequence except for some {\bf finite} many items in the sequence.", TV, NOR]]
+      r"in the sequence except for some {\bf finite} many items in the sequence.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"Let me confirm my understanding.", SV, NOR]]
+tls = tls + [[r"Let me confirm my understanding.", SV,STU]]
 count = count + 1
-tls = tls + [[r"By saying ``items in $A$ approach arbitrarily close to $l$'' ", SV, NOR]]
+tls = tls + [[r"By saying ``items in $A$ approach arbitrarily close to $l$'' ", SV,STU]]
 count = count + 1
-tls = tls + [[r"it doesn't mean that certain {\bf fixed} terms in the sequence are arbitrarily close to $l$. ", SV, NOR]]
+tls = tls + [[r"it doesn't mean that certain {\bf fixed} terms in the sequence are arbitrarily close to $l$. ", SV,STU]]
 count = count + 1
 tls = tls + [[r"It actually means that, for any given threshold $\epsilon>0$, all items except for some finite many are close "
-      r"to $l$ within the threshold $\epsilon$. ", SV, NOR]]
+      r"to $l$ within the threshold $\epsilon$. ", SV,STU]]
 count = count + 1
 tls = tls + [[r"Exactly.  Notice that as $\epsilon>0$ becomes smaller, we need exclude more terms in $A$ to make the rest close "
-      r"to $l$ within the threshold $\epsilon$. ", TV, NOR]]
+      r"to $l$ within the threshold $\epsilon$. ", TV,TEA]]
 count = count + 1
 tls = tls + [[r"But it does not matter how many items need to be removed as long as they are finite many "
-      r"to meet the requirement 'items in $A$ approach arbitrarily close to $l$'.", TV, NOR]]
+      r"to meet the requirement 'items in $A$ approach arbitrarily close to $l$'.", TV,TEA]]
 group_ends = group_ends + [count+1]
 # start with definition of limit
 count = count + 1
-tls = tls + [[r"The idea discussed before can be used to describe the limit of a general sequence!", TV, NOR]]
+tls = tls + [[r"The idea discussed before can be used to describe the limit of a general sequence!", TV,TEA]]
 count = count + 1
 tls = tls + [[r"Def 1.1.4: A sequence $A$ is called to "
               r"{\bf converge} to $l$ if for any given $\epsilon>0$, there exists $N$ such that ", TV, DEF]]
@@ -304,12 +303,12 @@ tls = tls + [[r"$\lim_{n\to \infty} a_n = l \qquad or \qquad a_n\to l$,", TV, DE
 count = count + 1
 tls = tls + [[r"and $l$ is called the {\bf limit} of the sequence.", TV, DEF]]
 count = count + 1
-tls = tls + [[r"Remark 1.1.2: The concept of the limit of a sequence is one of two fundamental concepts in calculus!", TV, NOR]]
+tls = tls + [[r"Remark 1.1.2: The concept of the limit of a sequence is one of two fundamental concepts in calculus!", TV,TEA]]
 count = count + 1
-tls = tls + [[r"We shall touch the other type of limit about function late. ", TV, NOR]]
+tls = tls + [[r"We shall touch the other type of limit about function late. ", TV,TEA]]
 group_ends = group_ends + [count+1]
 # test 9
-tls = tls + [[r"Let us look some examples. ", TV, NOR]]
+tls = tls + [[r"Let us look some examples. ", TV,TEA]]
 count = count + 1
 tls = tls + [[r"$\lim_{n\to \infty} \frac{n^2}{n^2+1} = 1$.", TV, EXA]]
 count = count + 1
@@ -342,9 +341,9 @@ tls = tls + [[r"Intuitively, the sequence does not approach to a given value sin
 group_ends = group_ends + [count+1]
 
 count = count + 1
-tls = tls + [[r"What can we do with limit? how does it bridge the finite world to the infinite world? ", SV, NOR]]
+tls = tls + [[r"What can we do with limit? how does it bridge the finite world to the infinite world? ", SV,STU]]
 count = count + 1
-tls = tls + [[r"Let us start with the task to add all terms in $A$.  It becomes actually quite trivial once we have the limit as a tool", TV, NOR]]
+tls = tls + [[r"Let us start with the task to add all terms in $A$.  It becomes actually quite trivial once we have the limit as a tool", TV,TEA]]
 count = count + 1
 tls = tls + [[r"Defintition of adding infinite many numbers.", TV, DEF]]
 count = count + 1
@@ -354,49 +353,49 @@ tls = tls + [[r"If $S_n$ converges to certain value $S$, then the sequence is ca
 count = count + 1
 tls = tls + [[r" Eq(1.9) $\qquad \sum_{1\le i< \infty}a_i := S = \lim_{n\to \infty} S_n$", TV, DEF]]
 count = count + 1
-tls = tls + [[r"Basically, we use the partial sum $S_n$ as an estimation and", TV, NOR]]
+tls = tls + [[r"Basically, we use the partial sum $S_n$ as an estimation and", TV,TEA]]
 count = count + 1
-tls = tls + [[r"the limit of the estimation process is equal to the exact value of the summation if the limit does exit. ", TV, NOR]]
+tls = tls + [[r"the limit of the estimation process is equal to the exact value of the summation if the limit does exit. ", TV,TEA]]
 count = count + 1
-tls = tls + [[r"As an example, consider a general geometric sequence on the right", TV, NOR]]
+tls = tls + [[r"As an example, consider a general geometric sequence on the right", TV,TEA]]
 count = count + 1
 tls = tls + [[r" Eq(1.10)  $\qquad G(x):= (1,x,x^2,\dots, x^{n-1},...).$", TV, EQU]]
 count = count + 1
-tls = tls + [[r"we can add first n terms and get the partial sum:", TV, NOR]]
+tls = tls + [[r"we can add first n terms and get the partial sum:", TV,TEA]]
 count = count + 1
 tls = tls + [[r"$S_n:=(1+x+x^2+\dots+x^{n-1})=\frac{1-x^n}{1-x}.$", TV, EQU]]
 count = count + 1
-tls = tls + [[r"For $0\le x<1$, it is not hard to show $S_n$ is increasing and converges to its supreme $\frac1{1-x}$, i.e.", TV, NOR]]
+tls = tls + [[r"For $0\le x<1$, it is not hard to show $S_n$ is increasing and converges to its supreme $\frac1{1-x}$, i.e.", TV,TEA]]
 count = count + 1
 tls = tls + [[r"Eq(1.11) $\qquad \sum_{1\le n <\infty}x^{n-1}=\frac1{1-x}, \quad 0\le x<1$", TV, EQU]]
 group_ends = group_ends + [count+1]
 #here
 count = count + 1
-tls = tls + [[r"To add infinite many items, we start working in the finite world by adding finite terms to get $S_n$, ", SV, NOR]]
+tls = tls + [[r"To add infinite many items, we start working in the finite world by adding finite terms to get $S_n$, ", SV,STU]]
 count = count + 1
-tls = tls + [[r"then take the limit of the sequence $(S_1,S_2,\cdots, S_n,\cdots)$ to get the sum of the sequence.", SV, NOR]]
+tls = tls + [[r"then take the limit of the sequence $(S_1,S_2,\cdots, S_n,\cdots)$ to get the sum of the sequence.", SV,STU]]
 count = count + 1
-tls = tls + [[r" Looks that limit indeed plays a bridge rule here.", SV, NOR]]
+tls = tls + [[r" Looks that limit indeed plays a bridge rule here.", SV,STU]]
 count = count + 1
-tls = tls + [[r"Indeed! In general,", TV, NOR]]
+tls = tls + [[r"Indeed! In general,", TV,TEA]]
 count = count + 1
 tls = tls + [[r"If a direct solution for a task is not available, "
               r"we often start with certain estimation process to estimate the target value and "
               r"expect that the limit of the estimation process is the target value.", TV, STA]]
 count = count + 1
-tls = tls + [[r"But why bother to add infinite many terms? ", SV, NOR]]
+tls = tls + [[r"But why bother to add infinite many terms? ", SV,STU]]
 count = count + 1
-tls = tls + [[r"It is one of basic operations for us to explore in the infinite world and ", TV, NOR]]
+tls = tls + [[r"It is one of basic operations for us to explore in the infinite world and ", TV,TEA]]
 count = count + 1
-tls = tls + [[r"is essential for both theoretic development and real world applications.", TV, NOR]]
+tls = tls + [[r"is essential for both theoretic development and real world applications.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"But let us roam in the ancient Greek imaginary world for a while ", TV, NOR]]
+tls = tls + [[r"But let us roam in the ancient Greek imaginary world for a while ", TV,TEA]]
 count = count + 1
-tls = tls + [[r"and think about the following famous paradox by the Greek philosopher Zeno nearly $2500$ thousand years ago.", TV, NOR]]
+tls = tls + [[r"and think about the following famous paradox by the Greek philosopher Zeno nearly $2500$ thousand years ago.", TV,TEA]]
 
 
 group_ends = group_ends + [count+1]
-annimiations[len(group_ends)-1]='zeno_anim_false'
+animations[len(group_ends) - 1]= 'zeno_anim_false'
 count = count + 1
 tls = tls + [[r"Achilles ($A$), the fleet-footed hero of the Trojan War, is engaged in a race with a tortoise ($T$), which has been granted a head start. ", TV, TOP]]
 count = count + 1
@@ -416,110 +415,110 @@ group_ends = group_ends + [count+1]
 #add animiation of Achilles
 
 count = count + 1
-tls = tls + [[r"It is absurd and yet sounds logical.", SV, NOR]]
+tls = tls + [[r"It is absurd and yet sounds logical.", SV,STU]]
 count = count + 1
-tls = tls + [[r"It is a paradox, isn't it? You have to admire ancient Greeks for their passions and curiosities in seeking the knowledge.", TV, NOR]]
+tls = tls + [[r"It is a paradox, isn't it? You have to admire ancient Greeks for their passions and curiosities in seeking the knowledge.", TV,TEA]]
 count = count + 1
 tls = tls + [[r"To get some insights, "
       r"let us be more quantitative and assume that $A$ runs and $T$ moves at speed $v_A=10m/s$ and, "
       r"assuming that the tortoise moves really fast to make calculation easy, $v_T=1m/s$ "
-      r"respectively and  $T$ has a head start of $100m$.", TV, NOR]]
+      r"respectively and  $T$ has a head start of $100m$.", TV,TEA]]
 
 group_ends = group_ends + [count+1]
-annimiations[len(group_ends)-1]='zeno_anim_true'
+animations[len(group_ends) - 1]= 'zeno_anim_true'
 
 count = count + 1
 tls = tls + [[r"Now assume that $A$ spends $t_i$ seconds "
       r"to move from $A_{i}$ to $A_{i+1}$ for $i=0,1,2,3,...$. It is clear $t_0 = \frac{100}{v_A}=10$. "
-      r"During the period $[[0, t_0]]$, $T$ moves ahead by the distance $s_1=t_0\times v_T$.", TV, NOR]]
+      r"During the period $[[0, t_0]]$, $T$ moves ahead by the distance $s_1=t_0\times v_T$.", TV,TEA]]
 
 count = count + 1
 tls = tls + [[r"To cover the distance $s_1$, $A$ needs $t_1=\frac{s_1}{v_A}=t_0(\frac{v_T}{v_A})$ seconds to reach $A_1$. But in this period ($t_1$ seconds),"
-      r"$T$ further moves forward by $t_1\times v_T$ meters.", TV, NOR]]
+      r"$T$ further moves forward by $t_1\times v_T$ meters.", TV,TEA]]
 
 count = count + 1
-tls = tls + [[r" In the next step, $A$ needs $t_2=\frac{t_1\times v_T}{v_A}=t_0 (\frac{v_T}{v_A})^2$ seconds to reach the position $A_2$.", TV, NOR]]
+tls = tls + [[r" In the next step, $A$ needs $t_2=\frac{t_1\times v_T}{v_A}=t_0 (\frac{v_T}{v_A})^2$ seconds to reach the position $A_2$.", TV,TEA]]
 
 count = count + 1
-tls = tls + [[r"In general, $A$ needs $s_i=t_0 (\frac{v_T}{v_A})^{i}$ seconds to reach $A_i$ from $A_{i-1}$.", TV, NOR]]
+tls = tls + [[r"In general, $A$ needs $s_i=t_0 (\frac{v_T}{v_A})^{i}$ seconds to reach $A_i$ from $A_{i-1}$.", TV,TEA]]
 
 group_ends = group_ends + [count+1]
 count = count + 1
 tls = tls + [[r"I see your points.  But I rather directly calculate the total time that $A$ needs to catch up the tortoise by simple algebra."
       r"Say  $A$ catches $T$ after $t$ seconds . Since $A$ moves extra $100$ meters than $T$, we have the equation"
       r"$t\times v_A = t\times v_T + 100$, and solve it for $t$ "
-      r"$t=100/(v_A-v_T)=100/9.$", SV, NOR]]
+      r"$t=100/(v_A-v_T)=100/9.$", SV,STU]]
 count = count + 1
 tls = tls + [[r"Excellent. We know now that $A$ should catch $T$ in exactly $100/9$ second.  But remember that we have paradox to address."
-      r"Do you have a way to find the total time following Zeno's argument?", TV, NOR]]
+      r"Do you have a way to find the total time following Zeno's argument?", TV,TEA]]
 count = count + 1
-tls = tls + [[r"By adding $t_1,t_2, ...$?", SV, NOR]]
+tls = tls + [[r"By adding $t_1,t_2, ...$?", SV,STU]]
 
 group_ends = group_ends + [count+1]
 
 count = count + 1
 tls = tls + [[r"Right. We need add all those $t_i$ to get the total time.  Zeno's argument implicitly implies that adding "
       r"infinite many of numbers should {\bf always} lead to some sort of infinity. We now know how to add a geometric sequence in "
-      r"Eq(1.11) and find the total time $T$ ", TV, NOR]]
+      r"Eq(1.11) and find the total time $T$ ", TV,TEA]]
 count = count + 1
 tls = tls + [[r"$\lim_{n\to \infty}T_n=\lim_{n\to \infty} 10(1+\frac{v_T}{v_A} +\cdots + (\frac{v_T}{v_A})^{n-1}) = 10 \times \frac1{1-\frac1{10}}=\frac{100}{9}$", TV, EQU]]
 count = count + 1
-tls = tls + [[r"which is consistent to what you just covered using simple algebra.", TV, NOR]]
+tls = tls + [[r"which is consistent to what you just covered using simple algebra.", TV,TEA]]
 count = count + 1
 tls = tls + [[r"Woo! The phase 'never catch' in the paradox is misleading because the total time $A$ spends in the process is "
-      r"not infinity although Achilles's catch-up process goes on forever.", TV, NOR]]
+      r"not infinity although Achilles's catch-up process goes on forever.", TV,TEA]]
 count = count + 1
 tls = tls + [[r"Right.  Ancient Greeks did not know how to add infinite many numbers in general.  "
       r"Had adding infinite many numbers always ended up with 'infinity', Achilles would never have caught the tortoise. "
-      r"But we know now that the result can be a finite value as demonstrated above.", TV, NOR]]
+      r"But we know now that the result can be a finite value as demonstrated above.", TV,TEA]]
 group_ends = group_ends + [count+1]
 #here
 count = count + 1
-tls = tls + [[r"Now let us back to the real world.", TV, NOR]]
+tls = tls + [[r"Now let us back to the real world.", TV,TEA]]
 count = count + 1
 tls = tls + [[r"For a computer to handle arithmetic operations, numbers need to be expressed "
-      r"in decimal expression (or similar like binary format).", TV, NOR]]
+      r"in decimal expression (or similar like binary format).", TV,TEA]]
 
 count = count + 1
 tls = tls + [[r"All irrational numbers, "
       r"simple as $\sqrt 2$, need to be expressed as the summation of a sequence of rational numbers so computer "
-      r"can effectively carry out some estimation with desired accuracy.", TV, NOR]]
+      r"can effectively carry out some estimation with desired accuracy.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"As a typical example, the well-known $\pi$ can be expressed in following ways, discovered by Leibniz,", TV, NOR]]
+tls = tls + [[r"As a typical example, the well-known $\pi$ can be expressed in following ways, discovered by Leibniz,", TV,TEA]]
 count = count + 1
 tls = tls + [[r"$\frac{\pi}{4} = 1-\frac13 + \frac15 -\frac17 +\frac19 + \cdots=\sum_{n=0}^{\infty}(-1)^{n}\frac1{2n+1}$.", TV, EQU]]
 count = count + 1
-tls = tls + [[r"If we use the sum $S_n$ of the first $n$ term as approximation of $\pi/4$, one can show", TV, NOR]]
+tls = tls + [[r"If we use the sum $S_n$ of the first $n$ term as approximation of $\pi/4$, one can show", TV,TEA]]
 count = count + 1
 tls = tls + [[r"$|\frac{\pi}4 -S_n|< \frac1{2n+1}.$", TV, EQU]]
 count = count + 1
-tls = tls + [[r"As such, we can not only estimate ${\pi}$ by $4S_n$, but also know that the error is not bigger than $\frac4{2n+1}$. ", TV, NOR]]
+tls = tls + [[r"As such, we can not only estimate ${\pi}$ by $4S_n$, but also know that the error is not bigger than $\frac4{2n+1}$. ", TV,TEA]]
 count = count + 1
-tls = tls + [[r"If you want to estimate $\pi$ with tolerate error $10^{-3}$, we need  ", TV, NOR]]
+tls = tls + [[r"If you want to estimate $\pi$ with tolerate error $10^{-3}$, we need  ", TV,TEA]]
 count = count + 1
 tls = tls + [[r" $\frac4{2n+1}<\frac1{10^{3}}$, or roughly $n>2\times 10^3=2000$.", TV, EQU]]
 count = count + 1
 tls = tls + [[r"You are encouraged to search the latest development online to find some amazing "
-      r"algorithm to estimate $\pi$.", TV, NOR]]
+      r"algorithm to estimate $\pi$.", TV,TEA]]
 
 count = count + 1
-tls = tls + [[r"The idea is the same: express $\pi$ in term of a summation of series and use the partial summation of first $n$ terms as approximation.", TV, NOR]]
+tls = tls + [[r"The idea is the same: express $\pi$ in term of a summation of series and use the partial summation of first $n$ terms as approximation.", TV,TEA]]
 
 group_ends = group_ends + [count+1]
 count = count + 1
-tls = tls + [[r"So we end with an irrational number by adding infinite many rational numbers.", SV, NOR]]
+tls = tls + [[r"So we end with an irrational number by adding infinite many rational numbers.", SV,STU]]
 count = count + 1
-tls = tls + [[r"I remember that we can only get a rational number by adding finite many rational numbers.", SV, NOR]]
+tls = tls + [[r"I remember that we can only get a rational number by adding finite many rational numbers.", SV,STU]]
 count = count + 1
-tls = tls + [[r"The above expression of $\pi$ shows that you might get an apple by adding infinite many of oranges.", TV, NOR]]
+tls = tls + [[r"The above expression of $\pi$ shows that you might get an apple by adding infinite many of oranges.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"But what really surprises us is that sophisticated functions can be expressed as the summation of simple power functions as we did before. ", TV, NOR]]
+tls = tls + [[r"But what really surprises us is that sophisticated functions can be expressed as the summation of simple power functions as we did before. ", TV,TEA]]
 count = count + 1
-tls = tls + [[r"We are going to show that, under certain conditions, this can be done for a general function $f(x)$, i.e. there exists $a_0,a_1,..$ such that", TV, NOR]]
+tls = tls + [[r"We are going to show that, under certain conditions, this can be done for a general function $f(x)$, i.e. there exists $a_0,a_1,..$ such that", TV,TEA]]
 count = count + 1
 tls = tls + [[r"Eq(1.13) $\qquad f(x) = a_0 + a_1 x + a_2x^2 + \dots +a_n x^n + \dots$", TV, EQU]]
 count = count + 1
-tls = tls + [[r"For examples, ", TV, NOR]]
+tls = tls + [[r"For examples, ", TV,TEA]]
 count = count + 1
 tls = tls + [[r"$\sin(x) = \frac{1}{1!}x  - \frac{1}{3!} x^3 + \frac{1}{5!} x^5 -\frac{1}{7!} x^7 \dots , \quad x\in R $", TV, EQU]]
 count = count + 1
@@ -527,19 +526,19 @@ tls = tls + [[r"$\cos(x) = 1- \frac{1}{2!}x^2  + \frac{1}{4!} x^4 - \frac{1}{6!}
 group_ends = group_ends + [count+1]
 count = count + 1
 tls = tls + [[r"Interesting.  I do not know much about the two trigonometric functions except they are periodic and bounded by $1$.  "
-      r"It is hard for me to associate them with power functions.", SV, NOR]]
+      r"It is hard for me to associate them with power functions.", SV,STU]]
 count = count + 1
-tls = tls + [[r"It is hard for me to associate them with power functions.", SV, NOR]]
+tls = tls + [[r"It is hard for me to associate them with power functions.", SV,STU]]
 count = count + 1
-tls = tls + [[r"It is actually quite easy to derive them once we develop certain tools.", TV, NOR]]
+tls = tls + [[r"It is actually quite easy to derive them once we develop certain tools.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"We will see more magics in our future exploration in the infinite world. ", TV, NOR]]
+tls = tls + [[r"We will see more magics in our future exploration in the infinite world. ", TV,TEA]]
 count = count + 1
-tls = tls + [[r"We have made a great achievement with a solid first step into the new world. ", TV, NOR]]
+tls = tls + [[r"We have made a great achievement with a solid first step into the new world. ", TV,TEA]]
 count = count + 1
-tls = tls + [[r"We have introduced the core concept, the limit of a sequence, and use it to sum infinite many numbers.", TV, NOR]]
+tls = tls + [[r"We have introduced the core concept, the limit of a sequence, and use it to sum infinite many numbers.", TV,TEA]]
 count = count + 1
-tls = tls + [[r"OK, let us take a break before we introduce the next fundamental important concept: derivative. ", TV, NOR]]
+tls = tls + [[r"OK, let us take a break before we introduce the next fundamental important concept: derivative. ", TV,TEA]]
 group_ends = group_ends + [count+1]
 
 

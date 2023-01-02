@@ -1,7 +1,7 @@
 
 from const import *
-from IntroToInfiniteWorld_text_short import tls, annimiations, group_ends
-#from IntroToInfiniteWorld_text import tls, annimiations, group_ends
+from IntroToInfiniteWorld_text_short import tls, animations, group_ends
+#from IntroToInfiniteWorld_text import tls, animations, group_ends
 from ZenoParadox import ZenoAnimation
 from process_tex_array import process_tex_array
 from StringToTex import StringToTex

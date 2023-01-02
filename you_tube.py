@@ -1,6 +1,17 @@
 #https://www.youtube.com/watch?v=j449Isga0Es&t=79s
-from manimlib.imports import *
-#from manim import *
+#from manimlib.imports import *
+from manim import *
+import numpy as np
+
+FRAME_WIDTH = 200
+FRAME_HEIGHT = 300
+
+inner_line_config = PURPLE_A
+outer_line_config = TEAL_A
+inner_arc_config = PURPLE_A
+outer_arc_config = TEAL_A
+tex_1_config = TEAL_A
+tex_2_config = PURPLE_A
 
 # INDEX:
 # Mnemonics - 20
@@ -24,7 +35,7 @@ class Mnemonics(Scene):
         # MOBS DEFINITIONS ----------------------------------
         l_buff = 1.2
         left_labels = VGroup(*[
-            TexText(t) for t in ["Radians:", "Degrees:", "sin", "cos", "tan"]
+            Tex(t) for t in ["Radians:", "Degrees:", "sin", "cos", "tan"]
         ])
         left_labels.arrange(DOWN, buff=l_buff)
         radians_grp = VGroup(*[
@@ -39,7 +50,7 @@ class Mnemonics(Scene):
         sin_vals = VGroup(*[
             Sqrt2(n) for n in range(5)
         ])
-        cos_vals = sin_vals.deepcopy()
+        cos_vals = sin_vals.copy()
         cos_vals = cos_vals[::-1]
         tan_vals = VGroup(*[
             Tex("\\frac{\\sqrt{%s}}{\\sqrt{%s}}" % (n, d))[0]
@@ -84,7 +95,7 @@ class Mnemonics(Scene):
         v_line.shift(RIGHT * 0.6)
         h_line = Line(all_grp.get_corner(UL) - h_l_buff, all_grp.get_corner(UR) + h_l_buff)
         h_line.set_y(v_line.get_start()[1])
-        h_line_d = h_line.deepcopy().set_y(v_line.get_end()[1])
+        h_line_d = h_line.copy().set_y(v_line.get_end()[1])
         h_lines = VGroup(h_line, h_line_d)
         for i in range(1, 4):
             line = h_line.copy()
@@ -318,7 +329,7 @@ class SumVectors(Scene):
         self.wait()
         # .........................
         self.play(
-            *list(map(ShowCreation, [x_line, y_line]))
+            *list(map(Create, [x_line, y_line]))
         )
         self.wait()
         for mob in updater_grp:
@@ -390,8 +401,8 @@ class DecimalTextNumber(VMobject):
         ])
 
         # Add non-numerical bits
-        if self.show_ellipsis:
-            self.add(SingleStringTex("\\dots"))
+        #if self.show_ellipsis:
+        #    self.add(SingleStringTex("\\dots"))
 
         if num_string.startswith("-"):
             minus = self.submobjects[0]
@@ -524,17 +535,18 @@ class ChangingDecimalText(Animation):
             )
 
     def yell_about_depricated_configuration(self, **kwargs):
+        print("yell_about_depricated_configuration")
         # Obviously this would optimally be removed at
         # some point.
-        for attr in ["tracked_mobject", "position_update_func"]:
-            if attr in kwargs:
-                warnings.warn("""
-                    Don't use {} for ChangingDecimal,
-                    that functionality has been depricated
-                    and you should use a mobject updater
-                    instead
-                """.format(attr)
-                              )
+        #for attr in ["tracked_mobject", "position_update_func"]:
+        #    if attr in kwargs:
+        #        warnings.warn("""
+        #            Don't use {} for ChangingDecimal,
+        #            that functionality has been depricated
+        #            and you should use a mobject updater
+        #            instead
+        #        """.format(attr)
+        #                      )
 
     def interpolate_mobject(self, alpha):
         self.mobject.set_value(
@@ -560,7 +572,7 @@ class Grid(VGroup):
     }
 
     def __init__(self, rows, columns, **kwargs):
-        digest_config(self, kwargs, locals())
+        #digest_config(self, kwargs, locals())
         self.rows = rows
         self.columns = columns
         super().__init__(**kwargs)
@@ -619,7 +631,7 @@ class SinInterface(VGroup):
     }
 
     def __init__(self, **kwargs):
-        digest_config(self, kwargs)
+        #digest_config(self, kwargs)
         super().__init__(**kwargs)
         if self.x_size != None:
             self.axes_config["x_max"] = self.x_size / 2
@@ -810,8 +822,10 @@ class CircleWithAngles(VGroup):
     }
 
     def __init__(self, radius=3, ang1=30, ang2=130, ang3=260, small_radius=0.4, **kwargs):
-        digest_config(self, kwargs)
+        #digest_config(self, kwargs)
         super().__init__(**kwargs)
+
+
         circle = Circle(radius=radius)
         vt_1 = ValueTracker(ang1)
         vt_2 = ValueTracker(ang2)
@@ -819,18 +833,20 @@ class CircleWithAngles(VGroup):
         p1 = Dot(circle.point_at_angle(ang1 * DEGREES))
         p2 = Dot(circle.point_at_angle(ang2 * DEGREES))
         p3 = Dot(circle.point_at_angle(ang3 * DEGREES))
-        in_lines = VMobject(**self.inner_line_config)
+        in_lines = VMobject(inner_line_config)
         # ------------- LINES
-        out_lines = VMobject(**self.outer_line_config)
+        out_lines = VMobject(outer_line_config)
         # ------------- ANGLES
         out_arc = self.get_arc_between_lines(small_radius, p1, p2, p3)
         in_arc = self.get_inner_angle(small_radius, p1, p2, p3, circle)
         # ------------- LABELS
-        theta_2 = Tex("2\\theta", **self.tex_2_config)
-        theta_1 = Tex("\\theta", **self.tex_1_config)
+        theta_2 = Tex("$2\\theta$", fill_color=tex_2_config)
+        theta_1 = Tex("$\\theta$", fill_color=tex_1_config)
         # ------------- Equals
-        theta_1_val = DecimalTextNumber(0, unit="deg", num_decimal_places=3, **self.tex_1_config)
-        theta_2_val = DecimalTextNumber(0, unit="deg", num_decimal_places=3, **self.tex_2_config)
+        theta_1_val = DecimalNumber(number=0, unit="deg", num_decimal_places=3, fill_color=tex_1_config)
+        theta_2_val = DecimalNumber(number=0, unit="deg", num_decimal_places=3, fill_color=tex_2_config)
+        # theta_1_val = DecimalTextNumber(number=0, unit="deg", num_decimal_places=3, fill_color=tex_1_config)
+        # theta_2_val = DecimalTextNumber(number=0, unit="deg", num_decimal_places=3, fill_color=tex_2_config)
         equal = Text("= 2 * ", font="Digital-7")
         theta_eq = VGroup(theta_1_val, equal, theta_2_val)
         theta_eq_temp = VGroup(theta_1_val, equal, theta_2_val)
@@ -897,7 +913,7 @@ class CircleWithAngles(VGroup):
             start_angle = h1
         else:
             start_angle = h2
-        arc = Arc(start_angle, angle, radius=radius, arc_center=center.get_center(), **self.outer_arc_config)
+        arc = Arc(start_angle=start_angle, angle=angle, radius=radius, arc_center=center.get_center(), stroke_color=outer_arc_config)
         if mob:
             return arc
         else:
@@ -910,7 +926,7 @@ class CircleWithAngles(VGroup):
         angle = angle_between_vectors(line1.get_unit_vector(), line2.get_unit_vector())
         v1 = Line(in_center.get_center(), d1.get_center())
         start_angle = angle_between_vectors(h.get_unit_vector(), v1.get_unit_vector())
-        arc = Arc(start_angle, angle * 2, radius=radius, arc_center=in_center.get_center(), **self.inner_arc_config)
+        arc = Arc(start_angle=start_angle, angle=angle * 2, radius=radius, arc_center=in_center.get_center(), stroke_color=inner_arc_config)
         if mob:
             return arc
         else:
@@ -931,25 +947,54 @@ class ArcBetweenVectors(Arc):
             start_angle = h2
         if invert_angle:
             start_angle = -start_angle
-        super().__init__(start_angle, angle, radius=radius, arc_center=center.get_center(), **kwargs)
+        super().__init__(start_angle=start_angle, angle=angle, radius=radius, arc_center=center.get_center(), **kwargs)
 
     def get_angle(self):
         return self.angle
 
 
 class LabelFromArc(Tex):
+    '''
     CONFIG = {
         "distance_proportion": 1.2
     }
+    '''
 
-    def __init__(self, arc, tex_height, *tex_strings, **kwargs):
+    def __init__(self, arc, tex_height,  *tex_strings, distance_proportion=1.2, **kwargs):
         super().__init__(*tex_strings, **kwargs)
         self.set_height(tex_height)
         center = arc.get_arc_center()
+
+        self.distance_proportion = distance_proportion
         max_size = max(self.get_width(), self.get_height()) * self.distance_proportion / 2
         vector = Line(center, arc.point_from_proportion(0.5)).get_vector()
         end_coord = center + vector + normalize(vector) * max_size
         self.move_to(end_coord)
+        self.__dict__.update(kwargs)
+
+class LabelFromArcBetter(Tex):
+    '''
+    CONFIG = {
+        "distance_proportion": 1.2
+    }
+    '''
+
+    def __init__(self, arc, tex_height,  tex_strings, distance_proportion=1.2, **kwargs):
+        super().__init__(**kwargs)
+        latexWord = Tex(tex_strings)
+
+        self.set_height(tex_height)
+        center = arc.get_arc_center()
+
+        self.distance_proportion = distance_proportion
+        max_size = max(self.get_width(), self.get_height()) * self.distance_proportion / 2
+        vector = Line(center, arc.point_from_proportion(0.5)).get_vector()
+        end_coord = center + vector + normalize(vector) * max_size
+        self.move_to(end_coord)
+        latexWord.next_to(self, DOWN)
+        self.__dict__.update(kwargs)
+
+
 
 
 class InscribedAngle(MovingCameraScene):
@@ -966,14 +1011,16 @@ class InscribedAngle(MovingCameraScene):
         for mob in circle_grp:
             mob.resume_updating()
         self.wait()
-        self.play(v1.set_value, -10, run_time=3, rate_func=linear)
+        #self.play(v1.set_value, -10, run_time=3, rate_func=linear)
+        self.play(v1.animate.set_value(-10), run_time=3, rate_func=linear)
         self.wait()
-        self.play(v2.set_value, 225, run_time=5, rate_func=there_and_back)
+        #self.play(v2.set_value, 225, run_time=5, rate_func=there_and_back)
+        self.play(v2.animate.set_value(255), run_time=5, rate_func=there_and_back)
         self.wait()
         self.play(
-            v1.set_value, 47,
-            v2.set_value, 110,
-            v3.set_value, 335,
+            v1.animate.set_value(47),
+            v2.animate.set_value(110),
+            v3.animate.set_value(335),
             run_time=3,
             rate_func=there_and_back
         )
@@ -981,14 +1028,14 @@ class InscribedAngle(MovingCameraScene):
         circle_grp.remove(eq)
         self.play(
             FadeOut(eq),
-            circle_grp[0].scale, 0.64,
-            circle_grp[0].move_to, ORIGIN,
-            circle_grp[0].to_edge, DOWN, {"buff": 0.2}
+            circle_grp[0].animate.scale(0.64),
+            circle_grp[0].animate.move_to(ORIGIN),
+            circle_grp[0].animate.to_edge(DOWN, buff=0.2)
         )
         self.wait()
         # ---------------------- Transform 2theta by varphi
         theta_2 = circle_grp[-1]
-        varphi = Tex("\\varphi")
+        varphi = Tex("$\\varphi$")
         varphi.match_color(theta_2)
         varphi.move_to(theta_2)
         varphi.match_updaters(theta_2)
@@ -996,26 +1043,30 @@ class InscribedAngle(MovingCameraScene):
         self.wait()
         # ---------------------- Cases
         titles = VGroup(*[
-            TexText(f) for f in ["Case 1", "Case 2", "Case 3"]
+            Tex(f) for f in ["Case 1", "Case 2", "Case 3"]
         ])
         titles.arrange(RIGHT, buff=3).to_edge(UP)
         # ---------------------- Case 1
         self.play(Write(titles[0]))
         self.wait()
         self.play(
-            v1.set_value, 40,
-            v2.set_value, 290 - 180,
-            v3.set_value, 290,
+            v1.animate.set_value(40),
+            v2.animate.set_value(290 - 180),
+            v3.animate.set_value(290),
             run_time=3,
         )
-        case_1 = circle_grp.deepcopy()
+        case_1 = circle_grp.copy()
         case_1.clear_updaters()
         self.play(
-            case_1.set_width, 2,
-            case_1.next_to, titles[0], DOWN, buff=0.2
+            # case_1.animate.set_width(2),
+            # case_1.animate.next_to(titles[0], DOWN, buff=0.2)
+            case_1.animate.set_width(0.25),
+            case_1.animate.to_edge(UP, buff=0.2)
         )
         self.wait()
         self.bring_to_front(case_1[1])
+
+        '''
         # ---------------------- Case 2
         self.play(Write(titles[1]))
         self.wait()
@@ -1131,6 +1182,7 @@ class InscribedAngle(MovingCameraScene):
 
         self.wait()
         # self.play(v2.set_value,190,run_time=5,rate_func=linear)
+        '''
 
     def proof_1(self, case):
         print("Proof 1")
@@ -1144,13 +1196,13 @@ class InscribedAngle(MovingCameraScene):
         r2 = Line(center.get_center(), d3.get_center(), color=RED_A, stroke_width=8)
         r1_tex = Tex("r").add_background_rectangle()
         r1_tex.move_to(r1)
-        r2_tex = r1_tex.deepcopy()
+        r2_tex = r1_tex.copy()
         r2_tex.move_to(r2)
         # self.add(r1,r2,r1_tex,r2_tex)
         self.cases_group_1.add(case, r1, r2, r1_tex, r2_tex, )
         self.play(
-            ShowCreation(r1),
-            ShowCreation(r2),
+            Create(r1),
+            Create(r2),
             Write(r1_tex),
             Write(r2_tex),
             Animation(dots),
@@ -1158,12 +1210,15 @@ class InscribedAngle(MovingCameraScene):
         self.bring_to_front(dots)
         self.wait()
         # Arc and theta
-        arc_p1 = ArcBetweenVectors(0.6, center, d3, d1, True)
+
+        #__init__(self, radius, d1, d2, center, invert_angle=False, **kwargs)
+        arc_p1 = ArcBetweenVectors(radius=0.6, d1=center, d2=d3, center=d1, invert_angle=True)
         arc_p1.match_color(theta)
-        theta_copy = LabelFromArc(arc_p1, theta.get_height(), "\\theta", distance_proportion=1.5)
+        theta_copy = LabelFromArc(arc_p1, theta.get_height(), "$\\theta$", distance_proportion=1.5)
         theta_copy.match_style(theta)
         # psi
-        arc_psi = ArcBetweenVectors(0.4, d3, d1, center, True)
+        #arc_psi = ArcBetweenVectors(0.4, d3, d1, center, True)
+        arc_psi = ArcBetweenVectors(radius=0.4, d1=d3, d2=d1, center=center, invert_angle=True)
         arc_psi.set_color(RED_A)
         psi = LabelFromArc(arc_psi, theta.get_height(), "\\psi", distance_proportion=1.3)
         psi.match_color(arc_psi)
@@ -1171,12 +1226,12 @@ class InscribedAngle(MovingCameraScene):
         self.cases_group_1.add(arc_p1, theta_copy, arc_psi, psi)
         self.play(
             TransformFromCopy(theta, theta_copy),
-            ShowCreation(arc_p1),
+            Create(arc_p1),
             run_time=2
         )
         self.wait(2)
         self.play(
-            ShowCreation(arc_psi),
+            Create(arc_psi),
             Write(psi),
             run_time=2
         )
@@ -1212,8 +1267,8 @@ class InscribedAngle(MovingCameraScene):
         self.align_formulas_with_equal(t4, t1, -2, -2)
         tg.to_edge(RIGHT, buff=0.7)
         # row 1
-        tc1 = theta.deepcopy()
-        tc2 = theta_copy.deepcopy()
+        tc1 = theta.copy()
+        tc2 = theta_copy.copy()
         self.play(
             TransformFromCopy(psi, t1[0]),
             ReplacementTransform(tc1.copy(), t1[3]),
@@ -1256,8 +1311,10 @@ class InscribedAngle(MovingCameraScene):
                 FadeToColor(t4, PURPLE_A),
             ),
             AnimationGroup(
-                ShowCreationThenDestructionAround(t4.deepcopy()),
-                ShowCreationThenDestructionAround(t4.deepcopy()),
+                # ShowCreationThenDestructionAround(t4.copy()),
+                # ShowCreationThenDestructionAround(t4.copy()),
+                ShowPassingFlash(t4.copy()),
+                ShowPassingFlash(t4.copy()),
                 lag_ratio=1
             )
         )
@@ -1286,12 +1343,12 @@ class InscribedAngle(MovingCameraScene):
         r3 = Line(center.get_center(), d3.get_center(), color=RED_A, stroke_width=8)
         r1_tex = Tex("r").add_background_rectangle()
         r1_tex.move_to(r1)
-        r2_tex = r1_tex.deepcopy()
+        r2_tex = r1_tex.copy()
         r2_tex.move_to(r2)
-        r3_tex = r1_tex.deepcopy()
+        r3_tex = r1_tex.copy()
         r3_tex.move_to(r3)
-        arc_p3_2 = ArcBetweenVectors(0.8, center, d2, d3).set_color(TEAL)
-        arc_p3_1 = ArcBetweenVectors(1, d1, center, d3).set_color(TEAL)
+        arc_p3_2 = ArcBetweenVectors(radius=0.8, d1=center, d2=d2, center=d3).set_color(TEAL)
+        arc_p3_1 = ArcBetweenVectors(radius=1, d1=d1, d2=center, center=d3).set_color(TEAL)
         # theta.shift(LEFT*0.2)
         th_1 = LabelFromArc(arc_p3_1, theta.get_height() * 0.8, "\\theta_1", color=theta.get_color(),
                             distance_proportion=2)
@@ -1302,9 +1359,9 @@ class InscribedAngle(MovingCameraScene):
         self.play(theta.next_to, d3, DOWN, buff=0.2)
         self.wait()
         self.play(
-            ShowCreation(r1),
-            ShowCreation(r2),
-            ShowCreation(r3),
+            Create(r1),
+            Create(r2),
+            Create(r3),
             Write(r1_tex),
             Write(r2_tex),
             Write(r3_tex),
@@ -1313,16 +1370,16 @@ class InscribedAngle(MovingCameraScene):
         self.play(
             ReplacementTransform(theta.copy()[0], th_1[0]),
             ReplacementTransform(theta.copy()[0], th_2[0]),
-            ShowCreation(arc_p3_1),
-            ShowCreation(arc_p3_2),
+            Create(arc_p3_1),
+            Create(arc_p3_2),
             run_time=3.5
         )
         self.wait()
         # self.remove(theta)
         self.cases_group_2.add(r1, r2, r3, r1_tex, r2_tex, r3_tex, arc_p3_1, arc_p3_2)
         # ---------------- ARC PSI
-        arc_psi_1 = ArcBetweenVectors(0.4, d3, d1, center, True).set_color(RED_A)
-        arc_psi_2 = ArcBetweenVectors(0.4, d3, d2, center, True).set_color(RED_A)
+        arc_psi_1 = ArcBetweenVectors(radius=0.4, d1=d3, d2=d1, center=center, invert_angle=True).set_color(RED_A)
+        arc_psi_2 = ArcBetweenVectors(radius=0.4, d1=d3, d2=d2, center=center, invert_angle=True).set_color(RED_A)
         arc_psi_2.rotate(-arc_psi_2.get_angle(), about_point=center.get_center())
         psi_1 = LabelFromArc(arc_psi_1, theta.get_height() * 0.8, "\\psi_1", color=RED_A, distance_proportion=1.6)
         psi_2 = LabelFromArc(arc_psi_2, theta.get_height() * 0.8, "\\psi_2", color=RED_A, distance_proportion=1.6)
@@ -1335,31 +1392,31 @@ class InscribedAngle(MovingCameraScene):
         # ---------------- FORMUAS transformn
         tex_formulas_kwargs = {
             "tex_to_color_map": {
-                "\\psi_1": psi_1.get_color(), "\\psi_2": psi_2.get_color(), "\\varphi": varphi.get_color(),
-                "\\theta_1": th_1.get_color(), "\\theta_2": th_1.get_color(),
+                "$\\psi_1$": psi_1.get_color(), "$\\psi_2$": psi_2.get_color(), "$\\varphi$": varphi.get_color(),
+                "$\\theta_1$": th_1.get_color(), "$\\theta_2$": th_1.get_color(),
             }
         }
         # FORMULAS
         f1 = Tex(
-            "\\psi_1", "+", "\\psi_2", "+", "\\varphi", "=", "360^\\circ", **tex_formulas_kwargs
+            "$\\psi_1$", "$+$", "$\\psi_2$", "$+$", "$\\varphi$", "$=$", "$360^\\circ$", **tex_formulas_kwargs
         )
         f2 = Tex(
-            "(", "180^\\circ", "-", "2", "\\theta_1", ")", "+", "(", "180^\\circ", "-", "2", "\\theta_2", ")", "+",
-            "\\varphi", "=", "360^\\circ",
+            "$($", "$180^\\circ$", "$-$", "$2$", "$\\theta_1$", "$)$", "$+$", "$($", "$180^\\circ$", "$-$", "$2$", "$\\theta_2$", ")", "+",
+            "$\\varphi$", "=", "$360^\\circ$",
             **tex_formulas_kwargs
         )
         f2.add_background_rectangle()
         f3 = Tex(
-            "-", "2", "\\theta_1", "-", "2", "\\theta_2", "+", "\\varphi", "=", "0", **tex_formulas_kwargs
+            "-", "2", "$\\theta_1$", "-", "2", "$\\theta_2$", "+", "$\\varphi$", "=", "0", **tex_formulas_kwargs
         )
         f4 = Tex(
-            "\\varphi", "=", "2", "\\theta_1", "+", "2", "\\theta_2", **tex_formulas_kwargs
+            "$\\varphi$", "=", "2", "$\\theta_1$", "+", "2", "$\\theta_2$", **tex_formulas_kwargs
         )
         f5 = Tex(
-            "\\varphi", "=", "2", "(", "\\theta_1", "+", "\\theta_2", ")", **tex_formulas_kwargs
+            "$\\varphi$", "=", "2", "(", "$\\theta_1$", "+", "$\\theta_2$", ")", **tex_formulas_kwargs
         )
         f6 = Tex(
-            "\\varphi", "=", "2", "\\theta", **tex_formulas_kwargs
+            "$\\varphi$", "=", "2", "$\\theta$", **tex_formulas_kwargs
         )
         f6[-1].set_color(theta.get_color())
         # f2[0].set_color(RED)
@@ -1370,7 +1427,7 @@ class InscribedAngle(MovingCameraScene):
         self.align_formulas_with_equal(f5, f1, 1, 5)
         self.align_formulas_with_equal(f6, f1, 1, 5)
         # ---------------- FORMUAS transformn
-        by_case_1 = TexText("By Case 1").to_edge(RIGHT)
+        by_case_1 = Tex("By Case 1").to_edge(RIGHT)
         self.play(
             LaggedStart(
                 TransformFromCopy(psi_1[0], f1[0], path_arc=-PI / 2),
@@ -1436,7 +1493,7 @@ class InscribedAngle(MovingCameraScene):
         self.wait()
         self.play(
             *[
-                ReplacementTransform(f4[i].deepcopy(), f5[j])
+                ReplacementTransform(f4[i].copy(), f5[j])
                 for i, j in zip(
                     [0, 1, 2, 3, 4, 5, 6],
                     [0, 1, 2, 4, 5, 2, 6]
@@ -1450,7 +1507,7 @@ class InscribedAngle(MovingCameraScene):
         self.wait()
         self.play(
             *[
-                ReplacementTransform(f5[i].deepcopy(), f6[j])
+                ReplacementTransform(f5[i].copy(), f6[j])
                 for i, j in zip(
                     [0, 1, 2],
                     [0, 1, 2]
@@ -1467,8 +1524,10 @@ class InscribedAngle(MovingCameraScene):
                 FadeToColor(f6, PURPLE_A),
             ),
             AnimationGroup(
-                ShowCreationThenDestructionAround(f6.deepcopy()),
-                ShowCreationThenDestructionAround(f6.deepcopy()),
+                #ShowCreationThenDestructionAround(f6.copy()),
+                #ShowCreationThenDestructionAround(f6.copy()),
+                ShowPassingFlash(f6.copy()),
+                ShowPassingFlash(f6.copy()),
                 lag_ratio=1
             )
         )
@@ -1502,10 +1561,10 @@ class InscribedAngle(MovingCameraScene):
         diameter_vector = Line(d3.get_center(), center.get_center()).get_vector()
         diameter = Line(d3.get_center(), d3.get_center() + diameter_vector * 2, color=RED_A)
         d4 = Dot(diameter.get_end())
-        arc_psi_1 = ArcBetweenVectors(0.6, d2, d4, d3, color=RED_A)
-        arc_psi_2 = ArcBetweenVectors(0.6, d2, d4, center, color=RED_A)
-        arc_alpha_1 = ArcBetweenVectors(0.7, d1, d4, d3, color=YELLOW_B, stroke_width=8)
-        arc_alpha_2 = ArcBetweenVectors(0.7, d1, d4, center, color=YELLOW_B, stroke_width=8)
+        arc_psi_1 = ArcBetweenVectors(radius=0.6, d1=d2, d2=d4, center=d3, color=RED_A)
+        arc_psi_2 = ArcBetweenVectors(radius=0.6, d1=d2, d2=d4, center=center, color=RED_A)
+        arc_alpha_1 = ArcBetweenVectors(radius=0.7, d1=d1, d2=d4, center=d3, color=YELLOW_B, stroke_width=8)
+        arc_alpha_2 = ArcBetweenVectors(radius=0.7, d1=d1, d2=d4, center=center, color=YELLOW_B, stroke_width=8)
         psi_1 = LabelFromArc(arc_psi_1, theta.get_height() * 0.8, "\\psi_1", color=RED_A, distance_proportion=2.1)
         psi_2 = LabelFromArc(arc_psi_2, theta.get_height() * 0.8, "\\psi_2", color=RED_A, distance_proportion=2.1)
         alpha_1 = LabelFromArc(arc_alpha_1, theta.get_height() * 0.8, "\\alpha_1", color=YELLOW_B,
@@ -1586,7 +1645,7 @@ class InscribedAngle(MovingCameraScene):
             self.align_formulas_with_equal(fi, f[0], i, 1)
         f.to_edge(RIGHT, buff=1.8)
         # --------------------------------------
-        by_case_1 = TexText("By case 1")
+        by_case_1 = Tex("By case 1")
         by_case_1.next_to(f[2], RIGHT)
         by_case_2 = by_case_1.copy()
         by_case_2.next_to(f[4], RIGHT)
@@ -1717,8 +1776,10 @@ class InscribedAngle(MovingCameraScene):
                 FadeToColor(f[6], PURPLE_A),
             ),
             AnimationGroup(
-                ShowCreationThenDestructionAround(f[6].deepcopy()),
-                ShowCreationThenDestructionAround(f[6].deepcopy()),
+                #ShowCreationThenDestructionAround(f[6].copy()),
+                #ShowCreationThenDestructionAround(f[6].copy()),
+                ShowPassingFlash(f[6].copy()),
+                ShowPassingFlash(f[6].copy()),
                 lag_ratio=1
             )
         )
@@ -1760,6 +1821,7 @@ class Polygon(Polygon):
 
 
 class SineLaw(Scene):
+    '''
     CONFIG = {
         "triangle_config": {
             "color": RED,
@@ -1779,13 +1841,37 @@ class SineLaw(Scene):
             }
         }
     }
+    '''
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.triangle_config = {
+            "color": RED,
+            "stroke_width": 8,
+        }
+        self.tex_map = {
+            "tex_to_color_map": {
+                "$\\alpha$": RED_A,
+                "$\\beta$": TEAL_A,
+                "$\\gamma$": PURPLE_A,
+                "A": RED_A,
+                "B": TEAL_A,
+                "C": PURPLE_A,
+                "x": GREEN_A,
+                "h_1": YELLOW_B,
+                "h_2": BLUE_B,
+            }
+        }
+        self.__dict__.update(kwargs)
 
     def construct(self):
         du = UP * 1.5
         d1 = Dot(LEFT * 4 + du)
         d2 = Dot(RIGHT * 2 + du)
         d3 = Dot(RIGHT * 4 + UP * 2 + du)
+
         triangle = Polygon(
+            #d1.get_center(), d2.get_center(), d3.get_center(), color=RED, stroke_width=8 #**self.triangle_config
             d1.get_center(), d2.get_center(), d3.get_center(), **self.triangle_config
         )
 
@@ -1817,11 +1903,11 @@ class SineLaw(Scene):
             ["B", "\\,", *sina_t, "=", "A", "\\,", *sinb_t],
             [*frac_strings(["B"], sinb_t), "=", *frac_strings(["A"], sina_t)]
         ]
-        sine_law = Tex(*[
+        sine_law = MathTex(*[
             *frac_strings(["C"], sinc_t), "=", *frac_strings(["B"], sinb_t), "=", *frac_strings(["A"], sina_t),
         ], **self.tex_map).scale(0.9)
         formulas_sine_1 = VGroup(*[
-            Tex(*f, **self.tex_map) for f in formulas_sine_string_1
+            MathTex(*f, **self.tex_map) for f in formulas_sine_string_1
         ])
         # formulas_sine.arrange_in_grid(None,2)
         formulas_sine_arrange_1 = VGroup(
@@ -1830,7 +1916,7 @@ class SineLaw(Scene):
             formulas_sine_1[4:].arrange(DOWN),
         ).arrange(DOWN, buff=0.7).scale(0.9)
         formulas_sine_2 = VGroup(*[
-            Tex(*f, **self.tex_map) for f in formulas_sine_string_2
+            MathTex(*f, **self.tex_map) for f in formulas_sine_string_2
         ])
         # formulas_sine.arrange_in_grid(None,2)
         formulas_sine_arrange_2 = VGroup(
@@ -1851,15 +1937,15 @@ class SineLaw(Scene):
         fs1 = formulas_sine_1
         fs2 = formulas_sine_2
         # ------------------------------
-        h1 = Tex("h_1", **self.tex_map)
-        h2 = Tex("h_2", **self.tex_map)
-        x = Tex("x", **self.tex_map)
+        h1 = MathTex("h_1", **self.tex_map)
+        h2 = MathTex("h_2", **self.tex_map)
+        x = MathTex("x", **self.tex_map)
         h1_line = self.get_h(d2, d1, d3)
         h2_line = DashedLine(d3.get_center() + RIGHT * 0.09, [d3.get_x() + 0.09, d2.get_y() - 0.09, 0])
         h3_line = DashedLine(d2.get_center() + RIGHT * 0.09, h2_line.get_end())
         rec_1 = Square().set_width(0.25)
         rec_1 = VMobject().set_points_as_corners([rec_1.get_corner(v) for v in [UR, UL, DL]])
-        rec_2 = rec_1.deepcopy()
+        rec_2 = rec_1.copy()
         rec_1.next_to(h2_line.get_end(), UL, buff=0)
         rec_2.rotate(h1_line.get_angle())
         rec_2.next_to(h1_line.get_end(), DL, buff=0)
@@ -1870,19 +1956,28 @@ class SineLaw(Scene):
         h2.next_to(h2_line, RIGHT, 0.1)
         # h2_line.rotate(PI,about_point=h2_line.get_start())
         # ------------------------------
-        alpha_arc = ArcBetweenVectors(0.3, d1, d3, d2)
-        beta_arc = ArcBetweenVectors(1.7, d2, d3, d1)
-        gamma_arc = ArcBetweenVectors(1, d1, d2, d3)
-        alpha_p_arc = ArcBetweenVectors(0.4, Dot(h2_line.get_end()), d3, d2)
+        alpha_arc = ArcBetweenVectors(radius=0.3, d1=d1, d2=d3, center=d2)
+        beta_arc = ArcBetweenVectors(radius=1.7, d1=d2, d2=d3, center=d1)
+        gamma_arc = ArcBetweenVectors(radius=1, d1=d1, d2=d2, center=d3)
+        alpha_p_arc = ArcBetweenVectors(radius=0.4, d1=Dot(h2_line.get_end()), d2=d3, center=d2)
         gamma_arc.rotate(gamma_arc.get_angle() * 0.9, about_point=gamma_arc.get_arc_center())
-        alpha = LabelFromArc(alpha_arc, labels[0].get_width() * 0.7, "\\alpha", distance_proportion=1.9, **self.tex_map)
-        beta = LabelFromArc(beta_arc, labels[0].get_width() * 1.1, "\\beta", distance_proportion=1.9, **self.tex_map)
-        gamma = LabelFromArc(gamma_arc, labels[0].get_width() * 1.1, "\\gamma", distance_proportion=1.9, **self.tex_map)
-        alpha_p = LabelFromArc(alpha_p_arc, labels[0].get_width() * 1.1, "\\alpha'", distance_proportion=1.9,
-                               **self.tex_map)
+
+        test = Tex('$\\alpha$')
+
+        alpha = LabelFromArc(alpha_arc, labels[0].get_width() * 0.7, "$\\alpha$", distance_proportion=1.9, **self.tex_map)
+        beta = LabelFromArc(beta_arc, labels[0].get_width() * 1.1, "$\\beta$", distance_proportion=1.9, **self.tex_map)
+        gamma = LabelFromArc(gamma_arc, labels[0].get_width() * 1.1, "$\\gamma$", distance_proportion=1.9, **self.tex_map)
+        alpha_p = LabelFromArc(alpha_p_arc, labels[0].get_width() * 1.1, "$\\alpha'$", distance_proportion=1.9, **self.tex_map)
+        '''
+        alpha = LabelFromArc(alpha_arc, labels[0].get_width() * 0.7, "\\alpha", distance_proportion=1.9)
+        beta = LabelFromArc(beta_arc, labels[0].get_width() * 1.1, "\\beta", distance_proportion=1.9)
+        gamma = LabelFromArc(gamma_arc, labels[0].get_width() * 1.1, "\\gamma", distance_proportion=1.9)
+        alpha_p = LabelFromArc(alpha_p_arc, labels[0].get_width() * 1.1, "\\alpha'", distance_proportion=1.9)
+        '''
         alpha.shift(LEFT * 0.25 + DOWN * 0.1)
-        but = Tex("{\\rm sin}(\\pi-\\alpha)={\\rm sin}(\\alpha)", **self.tex_map)
+        but = MathTex("{\\rm sin}(\\pi-\\alpha)={\\rm sin}(\\alpha)", **self.tex_map)
         but.to_corner(UL)
+
         t1 = Polygon(
             d1.get_center(), d2.get_center(), h1_line.get_end(),
             color=ORANGE, stroke_width=0, fill_opacity=0
@@ -1912,7 +2007,7 @@ class SineLaw(Scene):
         # - SHOW CREATIONS
         self.add_foreground_mobject(triangle)
         self.play(
-            ShowCreation(triangle, rate_func=linear),
+            Create(triangle, rate_func=linear),
             LaggedStart(*list(map(Write, labels)), lag_ratio=0.8),
             run_time=2.5
         )
@@ -1922,7 +2017,7 @@ class SineLaw(Scene):
                 TransformFromCopy(m1, m2)
                 for m1, m2 in zip(labels[::-1], [alpha, beta, gamma])
             ], lag_ratio=0.7),
-            LaggedStart(*list(map(ShowCreation, [alpha_arc, beta_arc, gamma_arc])), lag_ratio=0.7),
+            LaggedStart(*list(map(Create, [alpha_arc, beta_arc, gamma_arc])), lag_ratio=0.7),
             run_time=3.5
         )
         self.wait()
@@ -2076,8 +2171,10 @@ class SineLaw(Scene):
                 Restore(sine_law)
             ),
             AnimationGroup(
-                ShowCreationThenDestructionAround(sine_law.copy()),
-                ShowCreationThenDestructionAround(sine_law.copy()),
+                #ShowCreationThenDestructionAround(sine_law.copy()),
+                #ShowCreationThenDestructionAround(sine_law.copy()),
+                ShowPassingFlash(sine_law.copy()),
+                ShowPassingFlash(sine_law.copy()),
                 lag_ratio=1
             )
         )
@@ -2100,7 +2197,7 @@ class SineLaw(Scene):
             X_1 = line.point_from_proportion(1)
             x_1, y_1, z_1 = X_0
             x_2, y_2, z_2 = X_1
-            return abs((x_2 - x_1) * (y_1 - y_0) - (x_1 - x_0) * (y_2 - y_1) / get_norm(line.get_vector()))
+            return np.abs((x_2 - x_1) * (y_1 - y_0) - (x_1 - x_0) * (y_2 - y_1) / np.linalg.norm(line.get_vector()))
 
         distance = get_distance_point_line(line, dot)
         return DashedLine(dot.get_center(), dot.get_center() + distance * normal_vector)
@@ -2114,3 +2211,10 @@ class CosineLaw(Scene):
     def construct(self):
         # THIS IS YOUR TASK
         pass
+
+
+
+with tempconfig({"quality": "medium_quality"}):
+    #scene = UsingBraces()
+    scene = SineLaw()
+    scene.render()

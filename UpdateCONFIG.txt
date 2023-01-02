@@ -1,0 +1,25 @@
+#OLD WITH CONFIG
+
+class Circle(Arc):
+    CONFIG = {
+        "color": RED,
+        "close_new_points": True,
+        "anchors_span_full_range": False
+    }
+
+    def __init__(self, **kwargs):
+        Arc.__init__(self, 0, TAU, **kwargs)
+
+# NEW WITHOUT CONFIG
+
+class Circle(Arc):
+    def __init__(self, color=RED, close_new_points=True, anchors_span_full_range=False, **kwargs):
+        super().__init__(self, )
+        self.color = color
+        self.close_new_points = close_new_points
+        self.anchors_span_full_range = anchors_span_full_range
+        self.__dict__.update(kwargs)
+
+
+        create line(**kwargs)
+
